@@ -3,6 +3,7 @@ package com.example.lesson_recyclerview
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
@@ -14,6 +15,7 @@ class RecyclerViewItem(private val names: List<String>) :
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val largeTextView: TextView = itemView.findViewById(R.id.textViewLarge)
         val smallTextView: TextView = itemView.findViewById(R.id.textViewSmall)
+        val imageView: ImageView = itemView.findViewById(R.id.imageView)
     }
 
     // Метод для создания нового ViewHolder, который будет содержать представление для одного элемента RecyclerView
@@ -29,6 +31,9 @@ class RecyclerViewItem(private val names: List<String>) :
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.largeTextView.text = names[position]
         holder.smallTextView.text = "Some text"
+        holder.imageView.setOnClickListener {
+            holder.smallTextView.text = "Click"
+        }
     }
 
     // Возврат общего количества элементов списка
